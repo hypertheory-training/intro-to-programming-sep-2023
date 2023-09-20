@@ -6,10 +6,26 @@ public class StringCalculator
 
     public int Add(string numbers)
     {
-        if (numbers.Contains(','))
+        if (numbers == "") { return 0; }
+        if (numbers.Contains('-')) { throw new NoNegativeNumbersException(); }
+
+        var (delimeters, processNumbers) = ProcessNumbers(numbers);
+        return processNumbers.Split(delimeters).Select(int.Parse).Sum();
+    }
+    private (char[], string) ProcessNumbers(string input)
+    {
+        var delimeters = new List<char>
         {
-            return 3;
+            ',', '\n'
+        };
+        if (input.StartsWith("//"))
+        {
+            var newDelimeter = input.Substring(2, 1);
+            input = input[4..];
+            delimeters.Add(char.Parse(newDelimeter));
         }
-        return numbers == "" ? 0 : int.Parse(numbers);
+        return (delimeters.ToArray<char>(), input);
     }
 }
+
+public class NoNegativeNumbersException : ArgumentOutOfRangeException { }
