@@ -3,18 +3,18 @@
 public class Account
 {
     private decimal _balance = 5000M;
-    public void Deposit(TransactionValueTypes.Deposit amountToDeposit)
+    public void Deposit(decimal amountToDeposit)
     {
         _balance += amountToDeposit;
     }
 
-    public TransactionValueTypes.Balance GetBalance()
+    public decimal GetBalance()
     {
 
         return _balance;
     }
     // "Primitive Obsession" -
-    public void Withdraw(TransactionValueTypes.Withdrawl amountToWithdraw)
+    public void Withdraw(decimal amountToWithdraw)
     {
         GuardHasSufficientFunds(amountToWithdraw);
 
