@@ -36,6 +36,7 @@ public class StringCalculatorInteractionTests
         // When
 
         calculator.Add("123");
+        // Then
 
         fakeWebService.Received(1).NotifyOfLoggerFailure("Logger Went Boom");
 
