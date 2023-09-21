@@ -9,6 +9,22 @@ app.MapGet("/message", () =>
     return Results.Ok(response);
 });
 
+app.MapGet("/states", () =>
+{
+    var states = new Dictionary<string, string>
+    {
+        { "OH", "Ohio" },
+        { "KY", "Kentucy" },
+        { "CO", "Colorado" },
+        { "PR", "Puerto Rico" }
+    };
+    return Results.Ok(states);
+});
+
+app.MapGet("/policies/{policyNumber}", (string policyNumber) =>
+{
+    return Results.Ok(new { policyNumber });
+});
 
 app.Run();
 

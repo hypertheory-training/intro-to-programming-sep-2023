@@ -3,9 +3,10 @@
 public class Account
 {
     private decimal _balance = 5000M;
-    public void Deposit(TransactionValueTypes.Deposit amountToDeposit)
+    public virtual void Deposit(TransactionValueTypes.Deposit amountToDeposit)
     {
         _balance += amountToDeposit.Value;
+
     }
 
     public decimal GetBalance()
