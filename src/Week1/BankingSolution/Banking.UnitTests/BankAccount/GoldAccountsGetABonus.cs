@@ -1,19 +1,24 @@
 ﻿using Banking.Domain;
+using NSubstitute;
 
 namespace Banking.UnitTests.BankAccount;
 public class GoldAccountsGetABonus
 {
     [Fact]
-    public void GoldAccountsGetABonusOnDeposits()
+    public void AccountDepositsUseTherBonusCalculator()
     {
-        Account account = new GoldAccount();
+        // Given
+        var stubbedCalculator = Substitute.For<ICalculateBonusesForDeposits>();
+        Account account = new Account(stubbedCalculator);
         var openingBalance = account.GetBalance();
-        var amountToDeposit = 100M;
-        var deposit = TransactionValueTypes.Deposit.CreateFrom(100M);
+        var amountToDeposit = 82.23M;
+        var deposit = TransactionValueTypes.Deposit.CreateFrom(amountToDeposit);
+        stubbedCalculator.CalculateBonusFor(account, deposit).Returns(42M);
 
+        // When 
         account.Deposit(deposit);
 
-        Assert.Equal(openingBalance + amountToDeposit + 10M, account.GetBalance());
+        Assert.Equal(openingBalance + amountToDeposit + 42M, account.GetBalance());
 
     }
 }
