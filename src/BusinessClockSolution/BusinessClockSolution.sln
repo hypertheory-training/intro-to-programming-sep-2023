@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessClockApi", "BusinessClockApi\BusinessClockApi.csproj", "{600BDF6A-3E15-45F5-9C03-F71890CDF7C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessClockApi.IntegrationTests", "BusinessClockApi.IntegrationTests\BusinessClockApi.IntegrationTests.csproj", "{D56F5D11-3271-44F8-BAE0-252542FE4409}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{600BDF6A-3E15-45F5-9C03-F71890CDF7C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{600BDF6A-3E15-45F5-9C03-F71890CDF7C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{600BDF6A-3E15-45F5-9C03-F71890CDF7C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{600BDF6A-3E15-45F5-9C03-F71890CDF7C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D56F5D11-3271-44F8-BAE0-252542FE4409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D56F5D11-3271-44F8-BAE0-252542FE4409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D56F5D11-3271-44F8-BAE0-252542FE4409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D56F5D11-3271-44F8-BAE0-252542FE4409}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C58ACBE3-6C55-4557-9FD0-7DE2771B0BFA}
+	EndGlobalSection
+EndGlobal
