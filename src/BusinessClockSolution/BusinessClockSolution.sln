@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessClockApi", "Busines
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessClockApi.IntegrationTests", "BusinessClockApi.IntegrationTests\BusinessClockApi.IntegrationTests.csproj", "{D56F5D11-3271-44F8-BAE0-252542FE4409}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessClockApi.UnitTests", "BusinessClockApi.UnitTests\BusinessClockApi.UnitTests.csproj", "{62701A99-18E4-409A-B91F-3F856B897CA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D56F5D11-3271-44F8-BAE0-252542FE4409}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D56F5D11-3271-44F8-BAE0-252542FE4409}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D56F5D11-3271-44F8-BAE0-252542FE4409}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62701A99-18E4-409A-B91F-3F856B897CA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62701A99-18E4-409A-B91F-3F856B897CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62701A99-18E4-409A-B91F-3F856B897CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62701A99-18E4-409A-B91F-3F856B897CA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
