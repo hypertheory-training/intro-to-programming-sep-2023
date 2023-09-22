@@ -26,21 +26,32 @@ public class StandardBusinessClock : IProvideTheBusinessClock
             DayOfWeek.Sunday => false,
             _ => hour >= openingTime.Hours && hour < closingTime.Hours,
         };
+
+   
         if (isOpen)
         {
             return new ClockResponse(true, null);
+        } else if(OpeningLaterToday()) {
+            return new ClockResponse(false, new DateTime(now.Year, now.Month, now.Day).Add(openingTime));
         }
+
 
         var openingNext = dayOfTheWeek switch
         {
             DayOfWeek.Friday => now.AddDays(3),
             DayOfWeek.Saturday => now.AddDays(2),
             DayOfWeek.Sunday => now.AddDays(1),
+
             _ => now.AddDays(1)
         };
 
         openingNext = openingNext.Date.Add(openingTime);
 
         return new ClockResponse(false, openingNext);
+
+         bool OpeningLaterToday()
+        {
+            return hour < openingTime.Hours;
+        }
     }
 }
