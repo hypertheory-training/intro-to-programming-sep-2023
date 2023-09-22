@@ -5,7 +5,9 @@ public class StandardBusinessClockTests
 {
     [Theory]
     [InlineData("9/22/2023 8:59:00 AM", "9/25/2023 9:00:00 AM")]
+
     [InlineData("9/21/2023 5:00:00 PM", "9/22/2023 9:00:00 AM")]
+
     public void Closed(string currentTime, string openNext)
     {
         var fakeSystemTime = Substitute.For<ISystemTime>();
