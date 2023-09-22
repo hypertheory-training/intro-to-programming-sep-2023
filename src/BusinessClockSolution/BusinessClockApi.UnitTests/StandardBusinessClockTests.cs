@@ -14,9 +14,9 @@ public class StandardBusinessClockTests
 
         var response = clock.GetClock();
 
-        Assert.False(response.open);
-        Assert.NotNull(response.opensNext);
-        Assert.Equal(response.opensNext.Value, DateTime.Parse(openNext));
+        Assert.False(response.Open);
+        Assert.NotNull(response.OpensNext);
+        Assert.Equal(response.OpensNext.Value, DateTime.Parse(openNext));
     }
 
     [Theory]
@@ -30,7 +30,7 @@ public class StandardBusinessClockTests
 
         var response = clock.GetClock();
 
-        Assert.True(response.open);
-        Assert.Null(response.opensNext);
+        Assert.True(response.Open);
+        Assert.Null(response.OpensNext);
     }
 }

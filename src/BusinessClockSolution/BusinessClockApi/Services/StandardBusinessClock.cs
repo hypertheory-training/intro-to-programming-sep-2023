@@ -30,9 +30,10 @@ public class StandardBusinessClock : IProvideTheBusinessClock
    
         if (isOpen)
         {
-            return new ClockResponse(true, null);
+            return ClockResponse.CreateOpen();
         } else if(OpeningLaterToday()) {
-            return new ClockResponse(false, new DateTime(now.Year, now.Month, now.Day).Add(openingTime));
+
+            return  ClockResponse.CreateClosed(GetTodayOpeningTime());
         }
 
 
@@ -47,11 +48,12 @@ public class StandardBusinessClock : IProvideTheBusinessClock
 
         openingNext = openingNext.Date.Add(openingTime);
 
-        return new ClockResponse(false, openingNext);
+        return ClockResponse.CreateClosed(openingNext);
 
-         bool OpeningLaterToday()
-        {
-            return hour < openingTime.Hours;
+         
+        bool OpeningLaterToday() => hour < openingTime.Hours;
+       
+        DateTime GetTodayOpeningTime() => new DateTime(now.Year, now.Month, now.Day).Add(openingTime);
         }
     }
-}
+    
