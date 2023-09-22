@@ -24,7 +24,7 @@ public class GettingTheClock
     {
 
         // Given 
-        var expectedResponse =  ClockResponse.CreateOpen();
+        var expectedResponse = ClockResponse.CreateOpen();
         var host = await AlbaHost.For<Program>(config =>
         {
             var fakeClock = Substitute.For<ISystemTime>();
