@@ -3,24 +3,30 @@
 namespace BusinessClockApi.UnitTests;
 public class StandardBusinessClockTests
 {
-    [Fact]
-    public void Closed()
+    [Theory]
+    [InlineData("9/22/2023 8:59:00 AM", "9/25/2023 9:00:00 AM")]
+    [InlineData("9/21/2023 5:00:00 PM", "9/22/2023 9:00:00 AM")]
+    public void Closed(string currentTime, string openNext)
     {
         var fakeSystemTime = Substitute.For<ISystemTime>();
-        fakeSystemTime.GetCurrent().Returns(new DateTime(1969, 4, 20, 23, 59, 59));
+        fakeSystemTime.GetCurrent().Returns(DateTime.Parse(currentTime));
         IProvideTheBusinessClock clock = new StandardBusinessClock(fakeSystemTime);
 
         var response = clock.GetClock();
 
         Assert.False(response.open);
         Assert.NotNull(response.opensNext);
+        Assert.Equal(response.opensNext.Value, DateTime.Parse(openNext));
     }
 
-    [Fact]
-    public void Open()
+    [Theory]
+    [InlineData("9/22/2023 9:00:00 AM")]
+    [InlineData("9/22/2023 4:59:59 PM")]
+
+    public void Open(string currentTime)
     {
         var fakeSystemTime = Substitute.For<ISystemTime>();
-        fakeSystemTime.GetCurrent().Returns(new DateTime(2023, 9, 22, 14, 37, 59));
+        fakeSystemTime.GetCurrent().Returns(DateTime.Parse(currentTime));
         IProvideTheBusinessClock clock = new StandardBusinessClock(fakeSystemTime);
 
         var response = clock.GetClock();
