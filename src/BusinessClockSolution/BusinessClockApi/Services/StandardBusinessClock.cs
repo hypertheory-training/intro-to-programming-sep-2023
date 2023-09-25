@@ -1,46 +1,65 @@
-﻿namespace BusinessClockApi.Services;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace BusinessClockApi.Services;
 
 public class StandardBusinessClock : IProvideTheBusinessClock
 {
     private readonly ISystemTime _theClock;
+    private TimeSpan OpeningTime { get => new(9, 0, 0); }
+    private TimeSpan ClosingTime { get => new(17, 0, 0); }
 
-    public StandardBusinessClock(ISystemTime theClock)
-    {
-        _theClock = theClock;
-    }
+    public StandardBusinessClock(ISystemTime theClock) => _theClock = theClock;
 
     public ClockResponse GetClock()
     {
-        var now = _theClock.GetCurrent();
-        var dayOfTheWeek = now.DayOfWeek;
 
-        var hour = now.Hour;
+        var todays = getTodaysInfo();
 
-        var openingTime = new TimeSpan(9, 0, 0);
-        var closingTime = new TimeSpan(17, 0, 0);
-
-        var isOpen = dayOfTheWeek switch
+        var isOpenNow = todays.DayOfTheWeek switch
         {
-
             DayOfWeek.Saturday => false,
             DayOfWeek.Sunday => false,
-            _ => hour >= openingTime.Hours && hour < closingTime.Hours,
+            _ => isDuringBusinessHours(),
         };
-        if (isOpen)
+
+
+        if (isOpenNow)
         {
-            return new ClockResponse(true, null);
+            return ClockResponse.CreateOpen();
         }
 
-        var openingNext = dayOfTheWeek switch
+        if (isOpeningLaterToday())
         {
-            DayOfWeek.Friday => now.AddDays(3),
-            DayOfWeek.Saturday => now.AddDays(2),
-            DayOfWeek.Sunday => now.AddDays(1),
-            _ => now.AddDays(1)
+            return ClockResponse.CreateClosed(getTodayOpeningTime());
+        }
+
+
+        var openingNext = todays.DayOfTheWeek switch
+        {
+            DayOfWeek.Friday => todays.Date.AddDays(3),
+            DayOfWeek.Saturday => todays.Date.AddDays(2),
+            DayOfWeek.Sunday => todays.Date.AddDays(1),
+
+            _ => todays.Date.AddDays(1)
         };
 
-        openingNext = openingNext.Date.Add(openingTime);
+        openingNext = openingNext.Date.Add(OpeningTime);
 
-        return new ClockResponse(false, openingNext);
+        return ClockResponse.CreateClosed(openingNext);
+
+        // Local Functions
+        bool isOpeningLaterToday() => todays.Hour < OpeningTime.Hours;
+
+        DateTime getTodayOpeningTime() => new DateTime(todays.Date.Year, todays.Date.Month, todays.Date.Day).Add(OpeningTime);
+
+        (DateTime Date, DayOfWeek DayOfTheWeek, int Hour) getTodaysInfo()
+        {
+            var now = _theClock.GetCurrent();
+            return (now, now.DayOfWeek, now.Hour);
+        };
+
+        bool isDuringBusinessHours() => todays.Hour >= OpeningTime.Hours && todays.Hour < ClosingTime.Hours;
     }
 }
+
+
