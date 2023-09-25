@@ -1,17 +1,21 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Component } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { RouterOutlet } from "@angular/router";
+import { HeadingComponent } from "./components/heading/heading.component";
+import { NavBarComponent } from "./components/nav-bar/nav-bar.component";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
   template: `
-  <h1 class="text-red-500 font-extrabold text-3xl">Hello From Angular 16</h1>
+    <app-nav-bar />
+    <app-heading />
+
+    <main class="container mx-auto">
+      <router-outlet />
+    </main>
   `,
   styles: [],
+  imports: [CommonModule, RouterOutlet, HeadingComponent, NavBarComponent],
 })
-export class AppComponent {
- 
- 
-}
+export class AppComponent {}
