@@ -9,6 +9,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+// TODO: We don't have one of these. We did "standalone" when we created our app. What the heck is this?
 @NgModule({
   declarations: [
     AppComponent,

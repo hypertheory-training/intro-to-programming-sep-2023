@@ -11,12 +11,12 @@ import { MessageService } from '../message.service';
 })
 export class HeroesComponent implements OnInit {
 
-  heroes?: Hero[];
+  heroes?: Hero[]; // TODO: Nullables
   constructor(private readonly heroService: HeroService, private messageService: MessageService) {
 
   }
   ngOnInit(): void {
-    this.getHeroes();
+    this.getHeroes(); // TODO: NgOnInit and "lifecycle hooks"
   }
   selectedHero?: Hero;
   onSelect(hero: Hero): void {

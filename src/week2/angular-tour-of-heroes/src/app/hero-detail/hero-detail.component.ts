@@ -26,6 +26,7 @@ export class HeroDetailComponent {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero);
+      // TODO: Talk about this. Subscribing is generally bad, and subscribing (like this) and not unsubscribing is absolutely bad.
   }
   goBack() {
     this.location.back();

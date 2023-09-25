@@ -4,7 +4,7 @@ import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
+  templateUrl: './dashboard.component.html', // TODO: Talk about linked templates vs. inline
   styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
