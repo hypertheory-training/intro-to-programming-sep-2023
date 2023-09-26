@@ -25,9 +25,9 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
           </li>
           <li>
             <details>
-              <summary>Parent</summary>
+              <summary>Demos</summary>
               <ul class="p-2 bg-base-100">
-                <li><a>Link 1</a></li>
+                <li><a routerLink="todos">Todos</a></li>
                 <li><a>Link 2</a></li>
               </ul>
             </details>
