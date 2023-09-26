@@ -9,12 +9,12 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
   template: `
     <div class="navbar bg-base-100">
       <div class="flex-1">
-        <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <a class="btn btn-ghost normal-case text-xl">Frontend</a>
       </div>
       <div class="flex-none">
         <ul class="menu menu-horizontal px-1">
           <li>
-            <a routerLink="home" [routerLinkActive]="['link', 'link-active']"
+            <a routerLink="dashboard" [routerLinkActive]="['link', 'link-active']"
               >Dashboard</a
             >
           </li>
@@ -38,4 +38,4 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
   `,
   styles: [],
 })
-export class NavBarComponent {}
+export class NavBarComponent { }

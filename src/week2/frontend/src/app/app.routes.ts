@@ -4,7 +4,7 @@ import { SupportComponent } from "./pages/support/support.component";
 
 export const routes: Routes = [
   {
-    path: "home",
+    path: "dashboard",
     component: HomeComponent,
   },
   {
@@ -13,6 +13,6 @@ export const routes: Routes = [
   },
   {
     path: "**",
-    redirectTo: "home",
+    redirectTo: "dashboard",
   },
 ];

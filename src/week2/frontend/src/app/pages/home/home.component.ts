@@ -1,21 +1,28 @@
-import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { isOdd } from "src/app/utils";
+import { Component, signal } from "@angular/core";
+import { HeadingComponent } from "../../components/heading/heading.component";
 
 @Component({
-  selector: "app-home",
   standalone: true,
-  imports: [CommonModule],
   template: `
-    <p>This is our dashboard for the app.</p>
-    <button class="btn btn-primary" (click)="doIt()">
-      Click Me For a Good Time
-    </button>
+   <app-heading />
+    <p *ngIf="showMessage() === true">This is our dashboard for the app.</p>
+    <button (click)="toggleMessage()" type="button" class="btn btn-secondary">Toggle Message</button>
+    <ul>
+      <li *ngFor="let shoppingItem of shoppingList()">{{shoppingItem}}</li>
+    </ul>
   `,
   styles: [],
+  imports: [HeadingComponent, CommonModule]
 })
 export class HomeComponent {
-  doIt() {
-    console.log(isOdd(15));
+
+
+  showMessage = signal(true)
+
+  shoppingList = signal(['Bread', 'Beer', 'Shampoo']);
+
+  toggleMessage() {
+    this.showMessage.set(!this.showMessage());
   }
 }
