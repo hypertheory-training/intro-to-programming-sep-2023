@@ -1,4 +1,5 @@
-import { Injectable, signal } from "@angular/core";
+import { Injectable, computed, signal } from "@angular/core";
+import { TodoSummary } from "../components/todo-summary.component";
 
 @Injectable({
     providedIn: 'root'
@@ -28,6 +29,14 @@ export class TodosDataService {
         if (savedItem) {
             savedItem.completed = true
         }
+    }
+
+    getSummary() {
+        return computed(() => ({
+            total: this.items.length,
+            complete: this.items.filter(t => t.completed === true).length,
+            incomplete: this.items.filter(t => t.completed === false).length
+        }) as TodoSummary)
     }
 }
 

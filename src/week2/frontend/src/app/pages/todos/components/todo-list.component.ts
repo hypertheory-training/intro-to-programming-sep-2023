@@ -7,6 +7,7 @@ import { ToggleOnOffComponent } from "../../../ui/toggle-on-off.component";
   selector: 'app-todo-list',
   standalone: true,
   template: `
+  <pre>{{ items | json }}</pre>
   <h2 class="text-2xl">{{message}}</h2>
    <ul>
       <li *ngFor="let item of items" >
@@ -27,6 +28,6 @@ export class TodoListComponent {
   @Output() itemMarkedComplete = new EventEmitter<TodoItem>();
 
   doThis(item: TodoItem) {
-    this.itemMarkedComplete.emit(item);
+    this.itemMarkedComplete.emit(item); // well that happened.
   }
 }
