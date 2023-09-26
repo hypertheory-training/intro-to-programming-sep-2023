@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TodoItem } from 'src/app/services/todos-data.service';
 import { ToggleOnOffComponent } from "../../../ui/toggle-on-off.component";
@@ -12,7 +12,7 @@ import { ToggleOnOffComponent } from "../../../ui/toggle-on-off.component";
       <li *ngFor="let item of items" >
         <span [ngClass]="{ completed: item.completed}">{{ item.description }}</span>
       
-      <app-toggle-on-off *ngIf="item.completed === false" />
+      <app-toggle-on-off *ngIf="item.completed === false" (click)="doThis(item)"/>
 
       </li>
      
@@ -24,4 +24,9 @@ import { ToggleOnOffComponent } from "../../../ui/toggle-on-off.component";
 export class TodoListComponent {
   @Input({ required: true }) items: TodoItem[] = [];
   @Input() message = 'Your Todo List';
+  @Output() itemMarkedComplete = new EventEmitter<TodoItem>();
+
+  doThis(item: TodoItem) {
+    this.itemMarkedComplete.emit(item);
+  }
 }

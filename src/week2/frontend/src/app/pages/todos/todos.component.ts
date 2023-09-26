@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TodoEntryComponent } from "./components/todo-entry.component";
 import { TodoListComponent } from "./components/todo-list.component";
-import { TodosDataService } from 'src/app/services/todos-data.service';
+import { TodoItem, TodosDataService } from 'src/app/services/todos-data.service';
 
 @Component({
   standalone: true,
@@ -11,7 +11,7 @@ import { TodosDataService } from 'src/app/services/todos-data.service';
     <app-todo-entry (itemAdded)="timeToAddAnItem($event)" />
    </section>
    <section>
-    <app-todo-list [items]="todoItems()" message="Here is all the stuff you have to do!" />
+    <app-todo-list [items]="todoItems()" message="Here is all the stuff you have to do!" (itemMarkedComplete)="timeToMarkItemComplete($event)" />
    </section>
   `,
   styleUrls: ["./todos.component.css"],
@@ -25,5 +25,9 @@ export class TodosComponent {
 
   timeToAddAnItem(description: string) {
     this.service.addItem(description);
+  }
+
+  timeToMarkItemComplete(item: TodoItem) {
+    this.service.markItemComplete(item);
   }
 }

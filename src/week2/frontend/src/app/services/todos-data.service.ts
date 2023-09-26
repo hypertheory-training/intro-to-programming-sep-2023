@@ -5,6 +5,7 @@ import { Injectable, signal } from "@angular/core";
 })
 export class TodosDataService {
 
+
     private items: TodoItem[] = [
         { id: '1', description: 'Beer', completed: false },
         { id: '2', description: 'Shampoo', completed: true }
@@ -20,6 +21,13 @@ export class TodosDataService {
             completed: false
         };
         this.items.push(itemToAdd);
+    }
+
+    markItemComplete(item: TodoItem) {
+        const savedItem = this.items.find(i => i.id === item.id);
+        if (savedItem) {
+            savedItem.completed = true
+        }
     }
 }
 
