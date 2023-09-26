@@ -17,7 +17,7 @@ public class TimeBasedBonusCalculator : ICalculateBonusesForDeposits
     public decimal CalculateBonusForAccountDeposit(decimal balance, decimal deposit)
     {
 
-        bool open = _businessClock.IsOpen();
+        bool open = this._businessClock.IsOpen();
         if (open)
         {
             return balance >= 5000M ? deposit * .13M : 0;

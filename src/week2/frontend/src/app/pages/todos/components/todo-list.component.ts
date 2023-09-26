@@ -1,28 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TodoItem } from 'src/app/services/todos-data.service';
+import { ToggleOnOffComponent } from "../../../ui/toggle-on-off.component";
 
 @Component({
   selector: 'app-todo-list',
   standalone: true,
-  imports: [CommonModule],
   template: `
+  <h2 class="text-2xl">{{message}}</h2>
    <ul>
-      <li>
-        <span>Buy Beer</span>
+      <li *ngFor="let item of items" >
+        <span [ngClass]="{ completed: item.completed}">{{ item.description }}</span>
       
-        <button class="btn btn-circle">
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-</button>
+      <app-toggle-on-off *ngIf="item.completed === false" />
 
       </li>
-      <li>
-         <span class="completed">Get some Tortilla Chips</span>
-      </li>
+     
 </ul>
   `,
-  styles: [
-  ]
+  styleUrls: ['../todos.component.css'],
+  imports: [CommonModule, ToggleOnOffComponent]
 })
 export class TodoListComponent {
-
+  @Input({ required: true }) items: TodoItem[] = [];
+  @Input() message = 'Your Todo List';
 }
