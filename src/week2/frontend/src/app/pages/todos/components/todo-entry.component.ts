@@ -31,5 +31,6 @@ export class TodoEntryComponent {
   addThisItem() {
     const itemTheyWantToAdd = this.form.controls.item.value;
     this.itemAdded.emit(itemTheyWantToAdd);
+    this.form.reset();
   }
 }
