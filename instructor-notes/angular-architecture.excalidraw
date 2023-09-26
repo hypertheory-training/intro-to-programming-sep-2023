@@ -1,0 +1,185 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://marketplace.visualstudio.com/items?itemName=pomdtr.excalidraw-editor",
+  "elements": [
+    {
+      "id": "ehB4tz0ejlYMq7_qG-kyl",
+      "type": "arrow",
+      "x": 243,
+      "y": 300,
+      "width": 1131,
+      "height": 0,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": {
+        "type": 2
+      },
+      "seed": 900796393,
+      "version": 59,
+      "versionNonce": 821674311,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1695737236253,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          1131,
+          0
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "startBinding": null,
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": "arrow"
+    },
+    {
+      "id": "WPnvsfqhJ8tVK9MjxiF9r",
+      "type": "text",
+      "x": 299,
+      "y": 265,
+      "width": 120.61991882324219,
+      "height": 25,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "seed": 1475435399,
+      "version": 18,
+      "versionNonce": 1573622953,
+      "isDeleted": false,
+      "boundElements": [
+        {
+          "id": "5-GCKG3vex6g1iZqXhuEf",
+          "type": "arrow"
+        }
+      ],
+      "updated": 1695737424027,
+      "link": null,
+      "locked": false,
+      "text": "\"Main Trunk\"",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "baseline": 18,
+      "containerId": null,
+      "originalText": "\"Main Trunk\"",
+      "lineHeight": 1.25
+    },
+    {
+      "id": "zBXayP476SYEvudKE1oY7",
+      "type": "text",
+      "x": 252,
+      "y": 445,
+      "width": 826.939208984375,
+      "height": 75,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "seed": 419962215,
+      "version": 184,
+      "versionNonce": 214322857,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1695737401920,
+      "link": null,
+      "locked": false,
+      "text": "- Don't modify things. Don't change code that already works. (As much as possible)\n- Add new things instead.\n    - When it is \"done\" (ready) -> integrate that into your code.",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "baseline": 68,
+      "containerId": null,
+      "originalText": "- Don't modify things. Don't change code that already works. (As much as possible)\n- Add new things instead.\n    - When it is \"done\" (ready) -> integrate that into your code.",
+      "lineHeight": 1.25
+    },
+    {
+      "id": "5-GCKG3vex6g1iZqXhuEf",
+      "type": "arrow",
+      "x": 244,
+      "y": 303,
+      "width": 72,
+      "height": 51,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": {
+        "type": 2
+      },
+      "seed": 1917519783,
+      "version": 79,
+      "versionNonce": 447521191,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1695737425903,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          34,
+          51
+        ],
+        [
+          72,
+          1
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "startBinding": null,
+      "endBinding": {
+        "elementId": "WPnvsfqhJ8tVK9MjxiF9r",
+        "focus": 0.3319004853591714,
+        "gap": 14
+      },
+      "startArrowhead": null,
+      "endArrowhead": "arrow"
+    }
+  ],
+  "appState": {
+    "gridSize": null,
+    "viewBackgroundColor": "#ffffff"
+  },
+  "files": {}
+}

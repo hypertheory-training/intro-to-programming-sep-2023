@@ -1,12 +1,17 @@
 ﻿namespace Banking.Domain;
 
-public class TimeBasedBonusCalculator
+public class TimeBasedBonusCalculator : ICalculateBonusesForDeposits
 {
     private readonly IProvideTheBusinessClock _businessClock;
 
     public TimeBasedBonusCalculator(IProvideTheBusinessClock businessClock)
     {
         _businessClock = businessClock;
+    }
+
+    public decimal CalculateBonusFor(Account account, TransactionValueTypes.Deposit amountToDeposit)
+    {
+        return CalculateBonusForAccountDeposit(account.GetBalance(), amountToDeposit.Value);
     }
 
     public decimal CalculateBonusForAccountDeposit(decimal balance, decimal deposit)
