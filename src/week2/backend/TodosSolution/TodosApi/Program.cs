@@ -1,3 +1,5 @@
+using Marten;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +9,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var connectionString = builder.Configuration.GetConnectionString("todos") ?? throw new Exception("Can't start the api without a connection string");
+
+builder.Services.AddMarten(options =>
+{
+    options.Connection(connectionString);
+    options.AutoCreateSchemaObjects = Weasel.Core.AutoCreate.All;
+});
+
+builder.Services.AddScoped<IManageTodoLists, PostgresMartenTodoListManager>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

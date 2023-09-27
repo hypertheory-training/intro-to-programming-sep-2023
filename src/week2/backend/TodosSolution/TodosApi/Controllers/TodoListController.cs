@@ -4,18 +4,27 @@
 public class TodoListController : ControllerBase
 {
 
+    private readonly IManageTodoLists _todoListManager;
+
+    public TodoListController(IManageTodoLists todoListManager)
+    {
+        _todoListManager = todoListManager;
+    }
+
     // GET /todo-list
 
     [HttpPost("/todo-list")]
     public async Task<ActionResult> AddTodoItem([FromBody] TodoCreateRequest request)
     {
-        // Some Magic! (Code)
-        var response = new TodoItemResponse
-        {
-            Id = Guid.NewGuid().ToString(),
-            Description = request.Description,
-            Completed = false
-        };
+
+        TodoItemResponse response = await _todoListManager.AddTodoItemAsync(request);
         return StatusCode(201, response);
+    }
+
+    [HttpGet("/todo-list")]
+    public async Task<ActionResult> GetTodoListAsync()
+    {
+        TodoListSummaryResponse response = await _todoListManager.GetAllTodosAsync();
+        return Ok(response);
     }
 }

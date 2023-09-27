@@ -11,7 +11,12 @@ public record TodoCreateRequest
 
 public record TodoItemResponse
 {
-    public string Id { get; set; } = string.Empty;
+    public Guid Id { get; set; }
     public string Description { get; set; } = string.Empty;
     public bool Completed { get; set; }
+}
+
+public record TodoListSummaryResponse
+{
+    public IReadOnlyList<TodoItemResponse>? Items { get; set; }
 }
