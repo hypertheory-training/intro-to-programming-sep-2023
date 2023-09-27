@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { counterFeature } from './state';
+import { CounterEvents } from './state/counter.actions';
 
 @Component({
   selector: 'app-counter',
@@ -13,6 +14,9 @@ import { counterFeature } from './state';
     <span>{{ current() }}</span>
     <button (click)="increment()" class="btn btn-circle btn-sm">+</button>
    </div>
+   <div>
+    <button class="btn btn-sm btn-accent">Reset</button>
+</div>
   `,
   styles: [
   ]
@@ -22,10 +26,10 @@ export class CounterComponent {
 
   constructor(private readonly store: Store) { }
   increment() {
-    //
+    this.store.dispatch(CounterEvents.incrementClicked());
   }
 
   decrement() {
-    //this.current -= 1;
+    this.store.dispatch(CounterEvents.decrementClicked());
   }
 }
