@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-
-namespace TodosApi.Controllers;
+﻿namespace TodosApi.Controllers;
 
 [ApiController]
 public class TodoListController : ControllerBase
@@ -14,7 +12,6 @@ public class TodoListController : ControllerBase
     }
 
     // GET /todo-list
-    [Authorize]
 
     [HttpPost("/todo-list")]
     public async Task<ActionResult> AddTodoItem([FromBody] TodoCreateRequest request)
