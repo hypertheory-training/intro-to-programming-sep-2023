@@ -18,6 +18,7 @@ builder.Services.AddCors(options =>
         pol.AllowAnyMethod();
     });
 });
+
 var connectionString = builder.Configuration.GetConnectionString("todos") ?? throw new Exception("Can't start the api without a connection string");
 
 builder.Services.AddMarten(options =>
