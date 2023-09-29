@@ -28,4 +28,16 @@ public class TodoListController : ControllerBase
         TodoListSummaryResponse response = await _todoListManager.GetAllTodosAsync();
         return Ok(response);
     }
+
+    [HttpPost("/todo-list/completed-items")]
+    public async Task<ActionResult> MarkItemCompleted([FromBody] TodoItemResponse request)
+    {
+        if (request.Description == "String Calculator")
+        {
+            await Task.Delay(2000);
+            return BadRequest("This needs to stay on your list forever");
+        }
+        await _todoListManager.MarkItemCompletedAsync(request);
+        return NoContent();
+    }
 }

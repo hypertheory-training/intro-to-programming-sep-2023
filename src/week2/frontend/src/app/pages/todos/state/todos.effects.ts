@@ -2,9 +2,10 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { TodosDocuments, TodosEvents } from "./todos.actions";
-import { map, mergeMap, switchMap } from "rxjs";
+import { catchError, filter, map, mergeMap, of, switchMap } from "rxjs";
 import { TodoItem } from "src/app/services/todos-data.service";
 import { environment } from "src/environments/environment";
+import { TodoEntryComponent } from "../components/todo-entry.component";
 @Injectable()
 export class TodosEffects {
     private readonly baseUrl = environment.todoApi;
@@ -25,6 +26,18 @@ export class TodosEffects {
             .pipe(
                 map(payload => TodosDocuments.todoItem({ payload }))
             )
+        )
+    ), { dispatch: true })
+
+
+    markComplete$ = createEffect(() => this.actions$.pipe(
+        ofType(TodosEvents.todoItemCompleted),
+        mergeMap((a) => this.httpClient.post(this.baseUrl + 'todo-list/completed-items', a.payload)
+            .pipe(
+                map(() => ({ 'type': 'just letting you know I saved it ok' })),
+                catchError((r) => of(TodosEvents.todoItemFailedCompleted({ payload: a.payload }))),
+            )
+
         )
     ), { dispatch: true })
 
