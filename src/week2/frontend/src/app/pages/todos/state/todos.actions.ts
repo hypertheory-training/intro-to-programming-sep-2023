@@ -1,5 +1,7 @@
 import { createActionGroup, emptyProps, props } from "@ngrx/store";
 import { TodoItem } from "src/app/services/todos-data.service";
+import { FilterPrefsComponent } from "../components/filter-prefs/filter-prefs.component";
+import { FilterOptions } from ".";
 
 export const TodosEvents = createActionGroup({
     source: 'Todos Events',
@@ -8,6 +10,7 @@ export const TodosEvents = createActionGroup({
         'Todo Item Added': props<{ description: string }>(),
         'Todo Item Completed': props<{ payload: TodoItem }>(),
         'Todo Item Failed Completed': props<{ payload: TodoItem }>(),
+        'Todo List Filtered By': props<{ by: FilterOptions }>()
     }
 })
 

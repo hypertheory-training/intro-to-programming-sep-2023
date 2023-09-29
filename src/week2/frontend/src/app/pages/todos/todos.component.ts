@@ -6,6 +6,7 @@ import { TodoItem, TodosDataService } from 'src/app/services/todos-data.service'
 import { Store } from '@ngrx/store';
 import { todosFeature } from './state';
 import { TodosEvents } from './state/todos.actions';
+import { FilterPrefsComponent } from "./components/filter-prefs/filter-prefs.component";
 
 @Component({
   standalone: true,
@@ -15,6 +16,7 @@ import { TodosEvents } from './state/todos.actions';
   <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
   <span>Sorry - wasn't able to change that status.</span>
 </div>
+<app-filter-prefs />
    <section>
     <app-todo-entry (itemAdded)="timeToAddAnItem($event)" />
    </section>
@@ -23,7 +25,7 @@ import { TodosEvents } from './state/todos.actions';
    </section>
   `,
   styleUrls: ["./todos.component.css"],
-  imports: [CommonModule, TodoEntryComponent, TodoListComponent]
+  imports: [CommonModule, TodoEntryComponent, TodoListComponent, FilterPrefsComponent]
 })
 export class TodosComponent {
 

@@ -1,11 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { TodosDocuments, TodosEvents } from "./todos.actions";
-import { catchError, filter, map, mergeMap, of, switchMap } from "rxjs";
+import { catchError, map, mergeMap, of, switchMap } from "rxjs";
 import { TodoItem } from "src/app/services/todos-data.service";
 import { environment } from "src/environments/environment";
-import { TodoEntryComponent } from "../components/todo-entry.component";
+import { TodosDocuments, TodosEvents } from "./todos.actions";
 @Injectable()
 export class TodosEffects {
     private readonly baseUrl = environment.todoApi;

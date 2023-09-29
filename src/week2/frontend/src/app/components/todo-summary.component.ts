@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TodosDataService } from '../services/todos-data.service';
+import { Store } from '@ngrx/store';
+import { todosFeature } from '../pages/todos/state';
 
 @Component({
   selector: 'app-todo-summary',
@@ -26,10 +28,10 @@ import { TodosDataService } from '../services/todos-data.service';
 export class TodoSummaryComponent {
 
 
-  constructor(private readonly service: TodosDataService) {
+  constructor(private readonly store: Store) {
 
   }
-  summary = this.service.getSummary();
+  summary = this.store.selectSignal(todosFeature.selectTodoSummary);
 }
 
 
